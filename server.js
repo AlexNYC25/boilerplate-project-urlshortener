@@ -45,7 +45,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-app.post('/api/shorturl', function(req, res) {
+app.post('/api/shorturl/', function(req, res) {
   const urlRegex = /((http(s)?:\/\/.)(www\.)?){1}[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g 
   let new_url = req.body.original_url;
   let shortcut_url = getRandomInt(Number.MAX_SAFE_INTEGER).toString();
@@ -73,12 +73,12 @@ app.post('/api/shorturl', function(req, res) {
         return;
       }
 
-      res.send({original_url: urls.original_url, short_url: urls.short_url})
+      res.send({original_url: urls.original_url, short_url: urls.short_url.toNumber()});
       return;
     })
 
   } else {
-    res.send({error: 'invalid url'})
+    res.send({ error: 'invalid url' })
   }
   
 
