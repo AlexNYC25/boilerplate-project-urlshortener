@@ -108,7 +108,7 @@ app.post('/api/shorturl/new', function(req, res) {
     }) 
 
     // adds the url to the database
-    urls.create({original_url: new_url, short_url: shortcut_url}, (err, urls) => {
+    urls.create({original_url: new_url, short_url: parseInt(shortcut_url)}, (err, urls) => {
       if(err){
         res.send({error: 'database error'})
         return;
