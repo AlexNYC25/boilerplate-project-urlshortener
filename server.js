@@ -45,7 +45,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-app.post('/api/shorturl/', function(req, res) {
+app.post('/api/shorturl', function(req, res) {
   const urlRegex = /((http(s)?:\/\/.)(www\.)?){1}[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g 
   let new_url = req.body.url;
   console.log(req.body)
@@ -74,7 +74,7 @@ app.post('/api/shorturl/', function(req, res) {
         return;
       }
 
-      res.send({original_url: urls.original_url, short_url: urls.short_url.toNumber()});
+      res.send({original_url: urls.original_url, short_url: parseInt(urls.short_url)});
       return;
     })
 
