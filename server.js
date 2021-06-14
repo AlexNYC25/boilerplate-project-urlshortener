@@ -47,7 +47,8 @@ function getRandomInt(max) {
 
 app.post('/api/shorturl/', function(req, res) {
   const urlRegex = /((http(s)?:\/\/.)(www\.)?){1}[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g 
-  let new_url = req.body.original_url;
+  let new_url = req.body.url;
+  console.log(req.body)
   let shortcut_url = getRandomInt(Number.MAX_SAFE_INTEGER).toString();
 
   // checks if url string is actualy a valid url
